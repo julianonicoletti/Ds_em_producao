@@ -1,0 +1,13 @@
+# Arquivos temporários
+*.csv
+*.xlsx
+*.pkl
+
+# Ambientes virtuais
+venv/
+env/
+
+# Logs e arquivos de saída
+/logs/
+/output/
+
