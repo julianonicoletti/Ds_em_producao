@@ -1,5 +1,5 @@
 # Projeto de Predição de Faturamento da Rede de Farmácias Rossmann
-<img src="images\rossmann.jpg" width="220">
+<img src="images\rossmann.jpg">
 
 # RESUMO
 
@@ -71,8 +71,9 @@ O modelo escolhido foi o XGBoost, que apesar de, a depender dos hiperparâmetros
 
 ## 6.3 Ajuste de Hiperparâmetros
 Após a escolha do modelo foi feito um ajuste fino dos hiperparâmetros utilizando Random Search e Bayesian Search(que utiliza um processo de 'aprendizado' após cada teste de hiperparâmetro para decidir qual o próximo a testar). Ao final os parâmetros escolhidos foram esses:
+
 <img src="images\hiperparametros_xgboost.png">
- ![Hiperparametros escolhidos após uso do Bayesian Search](/Ds_em_producao\images\hiperparametros_xgboost.png "Hiperparametros escolhidos após uso do Bayesian Search")
+
  ## 6.4 Performance do Modelo
  Nos gráficos abaixos temos uma idéia da performance muito boa do modelo, visto que conseguiu reproduzir o padrão de vendas ao longo dos anos estudados. Nos 2 gráficos finais há uma distribuição das predições com base no erro. Repare que a grande maioria esteve ao redor do erro 0, tendo alguns 'outliers' que a predição apresentou alguma dificuldade.
 
