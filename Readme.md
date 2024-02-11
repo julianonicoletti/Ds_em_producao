@@ -1,5 +1,5 @@
 # Projeto de Predição de Faturamento da Rede de Farmácias Rossmann
-![imagem do logo da rede de farmácias Rossmann](/Ds_em_producao\images\rossmann.jpg "Logo da Rossmann")
+<img src="images\rossmann.jpg" width="220">
 
 # RESUMO
 
@@ -18,31 +18,33 @@ Com o objetivo de prever o faturamento de cada uma das lojas num prazo futuro de
 
 # 3. Estratégia para Solução
 Adotamos uma estratégia cíclica muito usada na mineração de dados, o CRISP-DM (Cross Industry Standard Process for Data Mining) que nos permite agilidade e eficiência na entrega e agregando valor para a empresa. O método permite que a cada ciclo, seja possível o aprimoramento do modelo e uma entrega mais rápida de um produto minimamente confiável com futuras melhorias.
-![imagem com representação gráfica do método CRISP-DM onde há um círculo de etapas que se interligam e geram valor a cada iteração, a cada ciclo é gerado uma solução.](/Ds_em_producao\images\PDCA.jpg "Método Crisp-DM")
+<img src="images\PDCA.jpg">
 
 # 4. Insights durante a Análise dos Dados
 Previamente a uma análise pormenorizada dos dados, foi feito um Brainstormming de hipóteses que poderiam influenciar nas vendas de cada loja para facilitar a análise exploratória.
-![imagem com as hipóteses que poderiam influenciar o total de vendas de cada loja, divididos em Localização, sazonalidade, características das lojas, dos produtos e do cliente](/Ds_em_producao\images\Vendas_Diarias_das_Lojas_mindmap.png "MindMap de Hipóteses que podem influenciar o faturamento")
+
+<img src="images\Vendas_Diarias_das_Lojas_mindmap.png">
 Após a criação desse mindmap foi feito a análise de cada uma das hipóteses utilizando os dados e ferramentas do Python e obtivemos essas como principais constatações:
 ## 4.1 Insight n.01: No Feriado de Natal as lojas vendem mais do que nos outros feriados e em dias regulares
 Hipótese Verdadeira. Com os dados podemos concluir que nos feriados o faturamento das lojas é maior e que, especialmente o feriado de Natal é o principal responsável por esse aumento.
-![Gráfico distribuição de vendas nos principais feriados do ano](/Ds_em_producao\images\Vendas_por_feriado.png "Gráfico distribuição de vendas nos principais feriados do ano")
+<img src="images\Vendas_por_feriado.png">
 ## 4.2 Insight n.02: O faturamento aumenta com o passar dos anos.
 Hipótese Verdadeira. O faturamento geral da rede aumenta com o passar dos anos e isso foi uma variável altamente correlacionada com o valor a se predizer "Sales".
-![Correlação das vendas com o passar do tempo (anos)](/Ds_em_producao\images\correlacao_vendas_ano.png "Correlação das vendas com o passar do tempo (anos)")
+<img src="images\correlacao_vendas_ano.png">
+
 ## 4.3 Insight n.03: O tamanho da loja e variedade de produtos não tem relação com o faturamento.
 Hipótese Falsa. O faturamento de cada loja tem ligação direta com o tamanho e sortimento de produtos. No gráfico temos 3 tipos, o básico (menor) vende menos que os outros 2 tipos (Extended e Extra).
-![Faturamento por tipo de loja](/Ds_em_producao\images\Vendas_por_feriado.png "Faturamento por tipo de loja")
+<img src="images\Vendas_por_feriado.png">
 
 # 5. Trabalho com as variáveis
 A partir do dataset original precisamos fazer algumas derivações, criando algumas variáveis e excluindo outras que não teriam imortância para o processo de Machine Learning.
 ## 5.1 Normalização da Variável Alvo
 A variável alvo é 'Sales' (volume de vendas por dia por loja). Quando analisado essa variável em sua distribuição, detecta-se uma assimetria positiva, que, segundo a literatura (Aurélien Geron) sugere-se a aplicação de uma correção com função quadrática ou ainda logarítmica.
-![Estudo de reescaling da variável alvo para melhorar a distribuição](/Ds_em_producao\images\reescaling_variavel_alvo.png "Estudo de reescaling da variável alvo para melhorar a distribuição")
+<img src="images\reescaling_variavel_alvo.png">
 Por inspecão dos gráficos optou-se pela distribuição logaritmica por apresentar uma distribuição mais 'normal'.
 ## 5.2 Transformação e reescalonamento de variáveis numéricas
 O reescalonamento de variáveis numéricas tem por objetivo levar todas essas variáveis a terem uma excursão de fundo de escala semelhantes, por exemplo, entre 0 e 1. Sendo assim avaliou-se que 3 variáveis precisavam de algum tipo de transformação e reescalonamento. O exemplo abaixo mostra o caso da variável competition_distance que por ter sido retirado seus valores 'NaN' e substituido por 200.000 m, apresentaria muito 'outliers'. Nesse caso foi feito um reescalonamento para a forma logarítmica.
-![Estudo de reescaling da variavel competition_distance para melhorar a distribuição](/Ds_em_producao\images\competition_distance.png "Estudo de reescaling da variavel competition_distance para melhorar a distribuição")
+<img src="images\competition_distance.png">
 ## 5.3 Transformação de variáveis categóricas
 As variáveis categóricas 'state_holiday', 'store_type' e 'assortment' receberam o seguinte tratamento:
 
@@ -62,18 +64,19 @@ Dentro do processo de elaboração do modelo de Machine Learning foram feitos te
 ## 6.1 Escolha da métrica
 Na escolha entre os algoritmos, utilizamos a métrica MAPE (Mean Absolute Percentage Error), que é uma medida de erro que expressa a porcentagem média do erro em relação ao valor real. Optamos por essa métrica porque ela é mais compreensível para a equipe de negócios e o CEO, uma vez que fornece uma representação percentual do erro em relação ao valor médio. Dessa forma, é mais fácil interpretar e comunicar o desempenho dos algoritmos selecionados.
 Assim, todos os modelos foram testados e obtivemos os seguintes resultados:
-
-![tabela com os valores dos modelos de predição usados e seus resultados](/Ds_em_producao\images\metricas_modelos.png "tabela com os valores dos modelos de predição usados e seus resultados")
+<img src="images\metricas_modelos.png">
 
 ## 6.2 Escolha do Modelo
 O modelo escolhido foi o XGBoost, que apesar de, a depender dos hiperparâmetros escolhidos (ver item 6.3), demora mais, a diferença do resultado do MAPE foi considerável.
 
 ## 6.3 Ajuste de Hiperparâmetros
 Após a escolha do modelo foi feito um ajuste fino dos hiperparâmetros utilizando Random Search e Bayesian Search(que utiliza um processo de 'aprendizado' após cada teste de hiperparâmetro para decidir qual o próximo a testar). Ao final os parâmetros escolhidos foram esses:
-
+<img src="images\hiperparametros_xgboost.png">
  ![Hiperparametros escolhidos após uso do Bayesian Search](/Ds_em_producao\images\hiperparametros_xgboost.png "Hiperparametros escolhidos após uso do Bayesian Search")
  ## 6.4 Performance do Modelo
  Nos gráficos abaixos temos uma idéia da performance muito boa do modelo, visto que conseguiu reproduzir o padrão de vendas ao longo dos anos estudados. Nos 2 gráficos finais há uma distribuição das predições com base no erro. Repare que a grande maioria esteve ao redor do erro 0, tendo alguns 'outliers' que a predição apresentou alguma dificuldade.
+
+ <img src="images\performance_modelo_graficos.png">
  ![gráficos com os resultados do modelo preditivo](/Ds_em_producao\images\performance_modelo_graficos.png "gráficos com os resultados do modelo preditivo")
 
  # 7. Aplicação no Telegram
