@@ -25,9 +25,11 @@ Previamente a uma análise pormenorizada dos dados, foi feito um Brainstormming 
 
 <img src="images\Vendas_Diarias_das_Lojas_mindmap.png">
 Após a criação desse mindmap foi feito a análise de cada uma das hipóteses utilizando os dados e ferramentas do Python e obtivemos essas como principais constatações:
+
 ## 4.1 Insight n.01: No Feriado de Natal as lojas vendem mais do que nos outros feriados e em dias regulares
 Hipótese Verdadeira. Com os dados podemos concluir que nos feriados o faturamento das lojas é maior e que, especialmente o feriado de Natal é o principal responsável por esse aumento.
 <img src="images\Vendas_por_feriado.png">
+
 ## 4.2 Insight n.02: O faturamento aumenta com o passar dos anos.
 Hipótese Verdadeira. O faturamento geral da rede aumenta com o passar dos anos e isso foi uma variável altamente correlacionada com o valor a se predizer "Sales".
 <img src="images\correlacao_vendas_ano.png">
